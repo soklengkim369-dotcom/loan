@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ទម្រង់ស្នើសុំកម្ចី</title>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Batambang:wght@400;700&family=Noto+Sans+Khmer:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Koulen', 'Batambang', 'Noto Sans Khmer', Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 25px;
+            font-family: 'Koulen', 'Noto Sans Khmer', Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0056b3;
+            padding: 0 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ទម្រង់ស្នើសុំកម្ចី</h1>
+        
+        <form id="loanForm" onsubmit="handleFormSubmit(event)">
+            
+            <fieldset>
+                <legend>ផ្នែកទី១៖ ព័ត៌មានផ្ទាល់ខ្លួន</legend>
+                <div class="form-group">
+                    <label for="full_name">ឈ្មោះពេញ (ជាអក្សរខ្មែរ)</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">ភេទ</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">-- សូមជ្រើសរើស --</option>
+                        <option value="ប្រុស">ប្រុស</option>
+                        <option value="ស្រី">ស្រី</option>
+                        <option value="ផ្សេងៗ">ផ្សេងៗ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dob">ថ្ងៃខែឆ្នាំកំណើត</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">លេខទូរស័ព្ទ</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="telegram">Telegram</label>
+                    <input type="text" id="telegram" name="telegram" required>
+                </div>
+                <div class="form-group">
+                    <label for="building">ស្នាក់នៅអគារ</label>
+                    <input type="text" id="building" name="building" required>
+                </div>
+                <div class="form-group">
+                    <label for="skill">រៀនជំនាញ</label>
+                    <input type="text" id="skill" name="skill" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>ផ្នែកទី២៖ ព័ត៌មានអំពីកម្ចី</legend>
+                <div class="form-group">
+                    <label for="loan_amount">ចំនួនទឹកប្រាក់ស្នើសុំ (រៀល)</label>
+                    <input type="number" id="loan_amount" name="loan_amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="loan_purpose">គោលបំណងនៃកម្ចី</label>
+                    <select id="loan_purpose" name="loan_purpose" required>
+                        <option value="">-- សូមជ្រើសរើស --</option>
+                        <option value="ការប្រើប្រាស់ផ្ទាល់ខ្លួន">ការប្រើប្រាស់ផ្ទាល់ខ្លួន</option>
+                        <option value="បង់ថ្លៃថ្នាំពេទ្យ">បង់ថ្លៃថ្នាំពេទ្យ</option>
+                        <option value="ជួសជុល">ជួសជុល</option>
+                        <option value="ផ្សេងៗ">ផ្សេងៗ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="loan_term">រយៈពេលសង (គិតជាថ្ងៃ)</label>
+                    <input type="number" id="loan_term" name="loan_term" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>លក្ខខណ្ឌក្នុងការខ្ខីលុយ</legend>
+                <div class="form-group">
+                    <span>សម្រាប់​អត្រាការប្រាក់ ១%​ ក្នុងមួយថ្ងៃ​ នៃចំនួនទឹកប្រាក់ដែលបានខ្ចី​​  "(កម្ចី​​ ៥ម៉ឺនរៀល​-ការប្រាក់​ ៥០០ រៀល​ក្នុងមួយថ្ងៃ)"​</span>
+                </div>
+            </fieldset>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms" style="font-family: 'Batambang', 'Noto Sans Khmer', Arial, sans-serif;">ខ្ញុំបានអាន និងយល់ព្រមតាមលក្ខខណ្ឌទាំងអស់</label>
+            </div>
+
+            <button type="submit" class="submit-btn">ដាក់ពាក្យស្នើសុំ</button>
+        </form>
+        
+        <script>
+            // ***************************************************************
+            // ✅ YOUR FINAL SECURE WEB APP URL
+            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyb4QE2oEJa4w90vE7Vfkq2KTpubbjvBxzY5wBijWMS4FY0uSid2y_pdQozVmrVrlcMUQ/exec'; 
+            
+            // Your Telegram Bot Token
+            const BOT_TOKEN = '8446501712:AAEGSuzF_3WaxOnWBHI_j7a3edLs3Kgp5pg';
+            
+            // Your Telegram Chat ID
+            const CHAT_ID = '6047095788'; 
+            // ***************************************************************
+
+            const termsCheckbox = document.getElementById('terms');
+            const submitBtn = document.querySelector('.submit-btn');
+
+            function toggleSubmit() {
+                submitBtn.disabled = !termsCheckbox.checked;
+            }
+            termsCheckbox.addEventListener('change', toggleSubmit);
+            toggleSubmit(); 
+
+            async function handleFormSubmit(event) {
+                event.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'កំពុងបញ្ជូន...';
+
+                const form = event.target;
+                const formData = new FormData(form);
+                
+                const sheetPromise = fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                }).then(() => {
+                    return { success: true, target: 'Sheet' };
+                }).catch(error => {
+                    console.error('Sheet Error:', error);
+                    return { success: false, target: 'Sheet', error: error.message };
+                });
+
+                const data = Object.fromEntries(formData.entries());
+                data['terms'] = termsCheckbox.checked ? 'យល់ព្រម' : 'មិនយល់ព្រម';
+                const loanAmount = new Intl.NumberFormat('km-KH', { style: 'currency', currency: 'KHR', minimumFractionDigits: 0 }).format(data.loan_amount);
+                
+                let telegramMessage = `*✨ ស្នើសុំកម្ចីថ្មី ✨*\n\n`;
+                telegramMessage += `*ផ្នែកទី១៖ ព័ត៌មានផ្ទាល់ខ្លួន*\n`;
+                telegramMessage += `  • ឈ្មោះពេញ: ${data.full_name}\n`;
+                telegramMessage += `  • ភេទ: ${data.gender}\n`;
+                telegramMessage += `  • ថ្ងៃខែឆ្នាំកំណើត: ${data.dob}\n`;
+                telegramMessage += `  • លេខទូរស័ព្ទ: ${data.phone}\n`;
+                telegramMessage += `  • Telegram: ${data.telegram}\n`;
+                telegramMessage += `  • ស្នាក់នៅអគារ: ${data.building}\n`;
+                telegramMessage += `  • រៀនជំនាញ: ${data.skill}\n\n`;
+                telegramMessage += `*ផ្នែកទី២៖ ព័ត៌មានអំពីកម្ចី*\n`;
+                telegramMessage += `  • ចំនួនទឹកប្រាក់: ${loanAmount}\n`;
+                telegramMessage += `  • គោលបំណង: ${data.loan_purpose}\n`;
+                telegramMessage += `  • រយៈពេលសង: ${data.loan_term} ថ្ងៃ\n\n`;
+                telegramMessage += `*✅ លក្ខខណ្ឌ*: ${data.terms}\n`;
+
+                const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const telegramPromise = fetch(telegramUrl, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: telegramMessage,
+                        parse_mode: 'Markdown'
+                    })
+                }).then(response => response.json())
+                  .then(result => {
+                    if (!result.ok) {
+                        return { success: false, target: 'Telegram', error: result.description };
+                    }
+                    return { success: true, target: 'Telegram' };
+                }).catch(error => {
+                    return { success: false, target: 'Telegram', error: error.message };
+                });
+
+                const results = await Promise.all([sheetPromise, telegramPromise]);
+                
+                const sheetSuccess = results.find(r => r.target === 'Sheet')?.success;
+                const telegramSuccess = results.find(r => r.target === 'Telegram')?.success;
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ដាក់ពាក្យស្នើសុំ';
+                
+                if (sheetSuccess && telegramSuccess) {
+                    alert('✅ ការស្នើសុំត្រូវបានដាក់ដោយជោគជ័យ!');
+                    form.reset();
+                    toggleSubmit();
+                } else {
+                    let errorMessage = '⚠️ មានកំហុសក្នុងការដាក់ពាក្យស្នើសុំ។\n';
+                    if (!sheetSuccess) errorMessage += '• មិនអាចរក្សាទុកទៅ Google Sheet បានទេ។\n';
+                    if (!telegramSuccess) errorMessage += '• មិនអាចបញ្ជូនទៅ Telegram បានទេ។\n';
+                    alert(errorMessage);
+                }
+            }
+        </script>
+    </div>
+
+</body>
+</html>
